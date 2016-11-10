@@ -15,6 +15,10 @@ var UserSchema = new Schema({
 
 
 UserSchema.methods.getTextEmailAddress = function() {
+	var phone = this.phone;
+	//i.e. 1-xxx-xxx-xxxx
+	if(phone.startsWith("1") && phone.length == 10)
+		phone = phone.substr(1);
 	switch(this.carrier) {
 		case "att": return phone + "@txt.att.net";
 		case "verizon": return phone + "@vtext.com";

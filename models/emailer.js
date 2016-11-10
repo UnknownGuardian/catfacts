@@ -3,8 +3,8 @@ const transporter = require('nodemailer').createTransport({
 	port: 465,
 	secure: true, // use SSL
 	auth: {
-		user: process.env.GMAIL_USER,
-		pass: process.env.GMAIL_PASSWORD
+		user: process.env.EMAIL_USER,
+		pass: process.env.EMAIL_PASSWORD
 	}
 });
 var User = require('./../models/user');
@@ -13,11 +13,11 @@ var User = require('./../models/user');
 //GMAIL_PASSWORD=lna
 //GMAIL_USER=noreplo@gmail.com
 
-const emailer = {
+var self = module.exports =  {
 
   _send:function (fromName, toEmail, subject, body) {
     transporter.sendMail({
-        from: `"${fromName}" <` + process.env.GMAIL_USER + `>`,
+        from: process.env.EMAIL_USER,
         to: toEmail,
         subject: subject,
         text: body
@@ -34,14 +34,15 @@ const emailer = {
     User.find({}, function(err, users) {
       if (err) throw err;
       for(var i = 0; i < users.length;i++) {
-        this._send("Cat Facts", users[i].getTextEmailAddress(), "Cat Facts", message);
+        //console.log(users[i].getTextEmailAddress());
+        var destination = users[i].getTextEmailAddress();
+        if(destination != "" && destination && destination.length > 0)
+          self._send("Cat Facts", destination, "Cat Facts", message);
       }
-    });
+    })
     
   }
 
 };
 
 
-
-module.exports = emailer;
