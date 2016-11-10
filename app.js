@@ -14,40 +14,30 @@ var mongoose = require('mongoose');
 var connectionString = `mongodb://${process.env.CATFACTS_USER}:${process.env.CATFACTS_PASS}@${process.env.CATFACTS_HOST}:${process.env.CATFACTS_PORT}/${process.env.CATFACTS_DB}`
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
-
-
 
 mongoose.connect(connectionString);
 
-mongoose.connection.on('connected', function () {  
+mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open to ' + connectionString);
-}); 
-
-// If the connection throws an error
-mongoose.connection.on('error',function (err) {  
-  console.log('Mongoose default connection error: ' + err);
-}); 
-
-// When the connection is disconnected
-mongoose.connection.on('disconnected', function () {  
-  console.log('Mongoose default connection disconnected'); 
 });
 
-// If the Node process ends, close the Mongoose connection 
-process.on('SIGINT', function() {  
-  mongoose.connection.close(function () { 
-    console.log('Mongoose default connection disconnected through app termination'); 
-    process.exit(0); 
-  }); 
-}); 
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
+});
 
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose default connection disconnected');
+});
 
-
-
-
+// If the Node process ends, close the Mongoose connection
+process.on('SIGINT', function() {
+  mongoose.connection.close(function () {
+    console.log('Mongoose default connection disconnected through app termination');
+    process.exit(0);
+  });
+});
 
 
 

@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/scripts.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+
+    <title>Cat Facts</title>
+  </head>
+
+  <body>
+    <div class="cats">
+      <div class="container">
+        <div class='row'>
+
+          <div class='col-md-3'></div>
+
+          <div class='col-md-6'>
+            <img src="images/nyan.gif" class='nyan'/>
+            <h1 class='title'>Random Cat Facts</h1>
+            <form id="form" class='catform'>
+            	<label>Phone Number</label><input name="phone" type="text" ng-keydown="crawlURLIfEnter($event)" class="validate">
+
+
+             <div class="input-field col s12">
+                <select name="carrier">
+                  <option value="" disabled selected>Choose your carrier</option>
+                  <option value="att">ATT</option>
+                  <option value="verizon">Verizon</option>
+                  <option value="sprint">Sprint</option>
+                </select>
+                <label class='otherLabel'>Phone Provider</label>
+              </div>
+              <button class="btn" id="submitbtn">Submit</button>
+            </form>
+
+          </div>
+
+          <div class='col-md-3'></div>
+
+      </div>
+    </div>
+  </body>
+</html>

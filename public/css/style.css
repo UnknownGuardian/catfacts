@@ -1,8 +1,58 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('http://data.whicdn.com/images/107577964/large.gif');
+  background-color: #000c66;
 }
 
-a {
-  color: #00B7FF;
+.cats{
+  background-image: url('../images/cats.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+h1.title{
+  color: #fa00fd;
+  font-family: retro;
+  text-align: center;
+}
+
+@font-face {
+  font-family: retro;
+/*  src: url("discoduckv2i.ttf"); */
+  src: url("MyGirlIsRetroDEMO.ttf");
+}
+
+.nyan{
+  width:700px;
+  height:250px;
+  margin-left:30%
+}
+
+.catform{
+  color:white;
+  width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border: thick dashed #fa00fd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color:black;
+}
+
+label{
+  color:white;
+}
+
+.otherLabel{
+  color:white
+}
+
+.btn{
+  background-color: yellow;
+  color:black;
+}
+
+.btn:hover{
+  background-color: white;
 }
