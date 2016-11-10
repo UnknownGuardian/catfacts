@@ -56,3 +56,7 @@ label{
 .btn:hover{
   background-color: white;
 }
+
+#video{
+  margin-left: 30%;
+}
