@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 
 /* GET get user */
 router.get('/:id', function(req, res, next) {
-	User.find({}, function(err, users) {
+	User.find({_id:req.params.id}, function(err, users) {
 	  if (err) throw err;
 	  res.json(users);
 	});
@@ -32,10 +32,10 @@ router.post('/', function(req, res, next) {
 	res.send('OK');
 });
 
-/* PUT update user */
+/* PUT update user * /
 router.put('/:id', function(req, res, next) {
-  res.send('respond with a resource');
-});
+ 
+});*/
 
 /* DELETE user */
 router.post('/:id', function(req, res, next) {

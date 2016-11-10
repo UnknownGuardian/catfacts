@@ -1,5 +1,5 @@
 const transporter = require('nodemailer').createTransport({
-	host: 'smtp.gmail.com',
+	host: 'smtp.mailgun.org',
 	port: 465,
 	secure: true, // use SSL
 	auth: {
@@ -7,16 +7,17 @@ const transporter = require('nodemailer').createTransport({
 		pass: process.env.GMAIL_PASSWORD
 	}
 });
+var User = require('./../models/user');
+
 
 //GMAIL_PASSWORD=lna
 //GMAIL_USER=noreplo@gmail.com
 
 const emailer = {
 
-  send:function (fromName, toEmail, subject, body) {
-    var p = Promise.defer();
+  _send:function (fromName, toEmail, subject, body) {
     transporter.sendMail({
-        from: `"${fromName}" <noreply@mydomain>`,
+        from: `"${fromName}" <` + process.env.GMAIL_USER + `>`,
         to: toEmail,
         subject: subject,
         text: body
@@ -25,10 +26,19 @@ const emailer = {
           return console.error(error);
         }
         console.log('Email sent', info);
-        p.resolve(info);
       });
-      return yield p.promise;
-  }),
+  },
+
+
+  sendMessage:function(message) {
+    User.find({}, function(err, users) {
+      if (err) throw err;
+      for(var i = 0; i < users.length;i++) {
+        this._send("Cat Facts", users[i].getTextEmailAddress(), "Cat Facts", message);
+      }
+    });
+    
+  }
 
 };
 
