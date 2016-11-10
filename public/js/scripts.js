@@ -55,6 +55,7 @@ $(document).ready(function() {
 
 	$("#submitbtn").click(function() {
     	$.post('users/', $('#form').serialize());
+      $('#form').trigger('reset')
     	return false;
   });
 
