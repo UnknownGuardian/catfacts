@@ -60,3 +60,11 @@ label{
 #video{
   margin-left: 30%;
 }
+
+.crazycat{
+  position: absolute;
+  bottom: 100px;
+  right: 100px;
+  width: 100px;
+  height:100px;
+}

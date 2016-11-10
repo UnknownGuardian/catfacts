@@ -1,4 +1,55 @@
+
+  var degrees = 90;
+
+function rotateCrazyCat(){
+
+  $(".crazycat").animate({  borderSpacing: degrees }, {
+    step: function(now,fx) {
+      $(this).css('transform','rotate('+now+'deg)');
+    },
+    duration:'500',
+    complete: function(){
+      degrees += 90;
+      if(degrees > 360 ){
+        degrees = 0;
+      }
+      console.log(degrees);
+      rotateCrazyCat();
+    }
+  },'linear');
+}
+
+function crazycat(){
+
+  var width = $("body").width();
+  var height = $("body").height();
+
+  $(".crazycat").animate({
+    bottom: "+="+(height-200)
+  }, 5000, function() {
+    $(".crazycat").animate({
+      right: "+="+(width-200)
+    }, 5000, function() {
+      // $(".crazycat").css("top","");
+      // $(".crazycat").css("bottom",$(".crazycat").css("bottom"));
+      $(".crazycat").animate({
+        bottom: "-="+(height-200)
+      }, 5000, function() {
+        // $(".crazycat").css("left","");
+        $(".crazycat").animate({
+          right: "-="+(width-200)
+        }, 5000, function() {
+          crazycat();
+        });
+      });
+    });
+  });
+}
+
 $(document).ready(function() {
+
+  rotateCrazyCat();
+  crazycat();
 
   $('select').material_select();
 
