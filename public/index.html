@@ -31,7 +31,9 @@
             <img src="images/nyan.gif" class='nyan'/>
             <h1 class='title'>Random Cat Facts</h1>
             <form id="form" class='catform'>
-            	<label>Phone Number</label><input name="phone" type="text" ng-keydown="crawlURLIfEnter($event)" class="validate">
+
+              <label>Phone Number (excluding leading 1)</label>
+              <input name="phone" type="text" ng-keydown="crawlURLIfEnter($event)" class="validate">
 
 
              <div class="input-field col s12">
@@ -51,6 +53,18 @@
           <div class='col-md-3'></div>
 
       </div>
+
+      <div class='row'>
+
+        <div class='col-md-3'></div>
+        <div class='col-md-6'>
+          <iframe width="560" height="315" src="" frameborder="0" allowfullscreen id='video'></iframe>
+
+        </div>
+        <div class='col-md-3'></div>
+
+      </div>
+
     </div>
   </body>
 </html>
